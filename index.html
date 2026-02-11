@@ -80,50 +80,54 @@ section h2 {
 }
 
 /* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
+<div class="projects-grid">
 
-.project-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
+  <div class="project-card">
+    <div class="content">
+      <h3>Hybrid EfficientNet–ViT</h3>
+      <p>Skin lesion classification combining CNN and Vision Transformer architectures.</p>
+      <a href="PUT_GITHUB_LINK_HERE" target="_blank">View Project</a>
+    </div>
+  </div>
 
-.project-card:hover {
-  transform: translateY(-8px);
-}
+  <div class="project-card">
+    <div class="content">
+      <h3>Drug–Drug Interaction Prediction</h3>
+      <p>MLP with embedding layers for predicting drug–drug interactions using the TWOSIDES dataset.</p>
+      <a href="PUT_GITHUB_LINK_HERE" target="_blank">View Project</a>
+    </div>
+  </div>
 
-.project-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+  <div class="project-card">
+    <div class="content">
+      <h3>Tesla Time-Series Forecasting</h3>
+      <p>MLP, LSTM, and BiLSTM models for financial time-series forecasting and comparison.</p>
+      <a href="PUT_GITHUB_LINK_HERE" target="_blank">View Project</a>
+    </div>
+  </div>
 
-.project-card .content {
-  padding: 20px;
-}
+  <div class="project-card">
+    <div class="content">
+      <h3>Iris Classification</h3>
+      <p>Compared MLP, SVM, and Random Forest models on the Iris dataset.</p>
+      <a href="PUT_GITHUB_LINK_HERE" target="_blank">View Project</a>
+    </div>
+  </div>
 
-.project-card h3 {
-  margin-bottom: 10px;
-}
+  <div class="project-card">
+    <div class="content">
+      <h3>Bith.AI Dashboard Development</h3>
+      <p>
+        Built a full dashboard from scratch for Bith.AI, connecting Streamlit to a MySQL database.
+        Designed insightful visualizations, including cohort analysis and tool usage tracking,
+        to support data-driven decisions.
+      </p>
+      <a href="#" target="_blank">Private Project</a>
+    </div>
+  </div>
 
-.project-card p {
-  font-size: 14px;
-  opacity: 0.7;
-}
+</div>
 
-.project-card a {
-  display: inline-block;
-  margin-top: 15px;
-  color: #2a5298;
-  font-weight: 600;
-  text-decoration: none;
-}
 
 /* CONTACT */
 .contact {
