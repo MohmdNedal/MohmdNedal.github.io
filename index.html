@@ -1,344 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOHAMMAD SAEED | Portfolio</title>
-
+  <meta charset="UTF-8">
+  <title>Mohammad Saeed | Data Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #f7f8fb; color: #222; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-    /* Layout */
-    .container { width: min(1100px, 92%); margin: 0 auto; }
-    section { padding: 70px 0; }
-    h2.section-title { font-size: 34px; margin-bottom: 30px; letter-spacing: .2px; }
-    .muted { color: #555; line-height: 1.8; }
+    body {
+      background-color: #3f3f3f;
+      color: white;
+      line-height: 1.6;
+    }
 
-    /* Hero (مثل devfolio) */
     .hero {
-      min-height: 70vh;
-      background: #4f4f4f;
+      height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      color: #fff;
-      padding: 60px 0;
-      position: relative;
     }
 
-    .hero-inner { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-
-    .avatar {
-      width: 140px; height: 140px;
+    .profile-img {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
+      border: 4px solid white;
       object-fit: cover;
-      border: 4px solid rgba(255,255,255,.9);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      margin-bottom: 20px;
     }
 
-    .hero h1 { font-size: 46px; font-weight: 700; }
-    .hero .subtitle { font-size: 18px; opacity: .95; }
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
 
-    .hero-actions { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 600;
+    .subtitle {
+      font-size: 18px;
+      margin: 15px 0 30px;
+      color: #d1d1d1;
+    }
+
+    .buttons a {
       text-decoration: none;
-      transition: .2s ease;
-      border: 1px solid rgba(255,255,255,.35);
-      color: #fff;
-      background: rgba(255,255,255,.08);
-      backdrop-filter: blur(6px);
+      padding: 12px 25px;
+      margin: 8px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: 0.3s ease;
+      display: inline-block;
     }
-    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.14); }
 
     .btn-primary {
-      background: #ffffff;
-      color: #222;
-      border-color: #ffffff;
-    }
-    .btn-primary:hover { background: #eaeaea; }
-
-    /* Sections look */
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-      border: 1px solid #eef0f6;
+      background-color: white;
+      color: #3f3f3f;
     }
 
-    /* Experience / Education cards */
-    .item-card { padding: 22px 22px; margin-bottom: 16px; }
-    .item-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .item-title { font-size: 20px; font-weight: 700; }
-    .item-sub { color: #555; font-weight: 500; }
-    .item-date { color: #666; font-weight: 500; }
-    ul.bullets { margin-top: 10px; padding-left: 18px; color: #444; line-height: 1.8; }
+    .btn-outline {
+      border: 1px solid white;
+      color: white;
+    }
 
-    /* Projects (بدون صور) */
-    .projects-grid {
+    .btn-outline:hover {
+      background-color: white;
+      color: #3f3f3f;
+    }
+
+    section {
+      padding: 80px 10%;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 980px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px) { .projects-grid { grid-template-columns: 1fr; } }
-
-    .project-card { padding: 20px; transition: .2s ease; }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12); }
-
-    .project-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .project-desc { color: #444; line-height: 1.7; margin-bottom: 12px; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-    .tag {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f3f5fb;
-      border: 1px solid #e9ecf6;
-      color: #444;
-      font-weight: 600;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
-    .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
-    .link-btn {
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      border: 1px solid #e9ecf6;
-      color: #2a5298;
-      background: #fff;
-      transition: .2s ease;
-    }
-    .link-btn:hover { background: #f3f6ff; transform: translateY(-1px); }
-
-    .link-btn.primary {
-      background: #2a5298;
-      color: #fff;
-      border-color: #2a5298;
-    }
-    .link-btn.primary:hover { background: #244a87; }
-
-    /* Contact */
-    .contact-row {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-    .contact-link {
-      text-decoration: none;
-      color: #2a5298;
-      font-weight: 700;
-      padding: 10px 14px;
+    .card {
+      background: white;
+      padding: 25px;
       border-radius: 12px;
-      border: 1px solid #e9ecf6;
-      background: #fff;
-      transition: .2s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
     }
-    .contact-link:hover { background: #f3f6ff; transform: translateY(-1px); }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #3f3f3f;
+      font-weight: 500;
+    }
 
     footer {
       text-align: center;
-      padding: 26px;
-      color: #777;
-      font-size: 14px;
+      padding: 20px;
+      background: #2c2c2c;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    @media(max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+      .subtitle {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
-
 <body>
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner container">
-      <!-- حط صورتك داخل فولدر assets باسم avatar.png -->
-      <img class="avatar" src="assets/avatar.png" alt="Avatar" />
+  <div class="hero">
+    <img src="profile.jpg" alt="Profile" class="profile-img">
+    <h1>MOHAMMAD SAEED</h1>
+    <div class="subtitle">Data Science | Analytics | AI</div>
 
-      <h1>MOHAMMAD SAEED</h1>
-      <p class="subtitle">Data Science | Analytics | AI</p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="PUT_CV_LINK_HERE" target="_blank">Download CV</a>
-        <a class="btn" href="#experience">Experience</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#contact">Contact</a>
-      </div>
+    <div class="buttons">
+      <a href="cv.pdf" class="btn-primary">Download CV</a>
+      <a href="#experience" class="btn-outline">Experience</a>
+      <a href="#projects" class="btn-outline">Projects</a>
+      <a href="#contact" class="btn-outline">Contact</a>
     </div>
-  </header>
+  </div>
 
   <!-- ABOUT -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="muted" style="max-width: 820px;">
-        Data Analyst with hands-on experience transforming operational and business data into actionable insights that support strategic decision-making. Skilled in SQL, Excel, Power BI, and Python, with strong expertise in KPI development, dashboard design, and cohort analysis. Experienced in collaborating with cross-functional teams to drive performance improvement and data-driven growth, with a strong interest in applying AI techniques to enhance analytics and decision-making.
-      </p>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Experience</h2>
-
-      <div class="card item-card">
-        <div class="item-top">
-          <div>
-            <div class="item-title">Bith.AI Dashboard Development</div>
-            <div class="item-sub">Streamlit • MySQL • Analytics</div>
-          </div>
-          <div class="item-date">YYYY</div>
-        </div>
-        <ul class="bullets">
-          <li>Built a full dashboard from scratch for Bith.AI, connecting Streamlit to a MySQL database.</li>
-          <li>Designed insightful visualizations, including cohort analysis and tool usage tracking.</li>
-          <li>Enabled data-driven decisions through clean KPI tracking and interactive exploration.</li>
-        </ul>
-      </div>
-
-      <!-- إذا عندك خبرات ثانية انسخي نفس الكرت -->
-    </div>
+    <h2>About Me</h2>
+    <p>
+      Data Analyst with hands-on experience transforming business and product data into actionable insights. 
+      Skilled in SQL, Python, Power BI, and dashboard development. Experienced in KPI tracking, cohort analysis, 
+      funnel analysis, and building data systems that support strategic decision-making.
+    </p>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
+    <h2>Selected Projects</h2>
 
-      <div class="projects-grid">
+    <div class="projects">
 
-        <div class="card project-card">
-          <div class="project-title">Hybrid EfficientNet–ViT</div>
-          <div class="project-desc">
-            Skin lesion classification combining CNN and Vision Transformer architectures.
-          </div>
-          <div class="tags">
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">PyTorch</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn primary" href="PUT_GITHUB_LINK_HERE" target="_blank">GitHub</a>
-            <a class="link-btn" href="PUT_DEMO_OR_REPORT_LINK_HERE" target="_blank">Report/Demo</a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-title">Drug–Drug Interaction Prediction</div>
-          <div class="project-desc">
-            MLP with embedding layers for predicting drug–drug interactions using TWOSIDES.
-          </div>
-          <div class="tags">
-            <span class="tag">NLP/Embeddings</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">Classification</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn primary" href="PUT_GITHUB_LINK_HERE" target="_blank">GitHub</a>
-            <a class="link-btn" href="PUT_DEMO_OR_REPORT_LINK_HERE" target="_blank">Report/Demo</a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-title">Tesla Time-Series Forecasting</div>
-          <div class="project-desc">
-            MLP, LSTM, and BiLSTM models for financial time-series forecasting and comparison.
-          </div>
-          <div class="tags">
-            <span class="tag">Time Series</span>
-            <span class="tag">LSTM</span>
-            <span class="tag">Forecasting</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn primary" href="PUT_GITHUB_LINK_HERE" target="_blank">GitHub</a>
-            <a class="link-btn" href="PUT_DEMO_OR_REPORT_LINK_HERE" target="_blank">Report/Demo</a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-title">Iris Classification</div>
-          <div class="project-desc">
-            Compared MLP, SVM, and Random Forest models on the Iris dataset.
-          </div>
-          <div class="tags">
-            <span class="tag">ML</span>
-            <span class="tag">SVM</span>
-            <span class="tag">Random Forest</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn primary" href="PUT_GITHUB_LINK_HERE" target="_blank">GitHub</a>
-            <a class="link-btn" href="PUT_DEMO_OR_REPORT_LINK_HERE" target="_blank">Report/Demo</a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-title">Bith.AI Dashboard (Private)</div>
-          <div class="project-desc">
-            Streamlit dashboard connected to MySQL with cohort analysis and tool usage tracking.
-          </div>
-          <div class="tags">
-            <span class="tag">Streamlit</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Cohort Analysis</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn primary" href="#" target="_blank">Private</a>
-          </div>
-        </div>
-
-        <!-- انسخي كرت جديد لأي مشروع زيادة -->
-
+      <div class="card">
+        <h3>Bith Business Analytics Dashboard</h3>
+        <p>
+          Built an end-to-end Streamlit dashboard connected to MySQL and multiple APIs to centralize KPIs including 
+          LTV, CAC, MRR, retention, churn, and cohort analysis. Used weekly for business decision-making.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- EDUCATION -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-
-      <div class="card item-card">
-        <div class="item-top">
-          <div>
-            <div class="item-title">University Name</div>
-            <div class="item-sub">B.Sc. in Data Science & AI</div>
-          </div>
-          <div class="item-date">2022 – 2026</div>
-        </div>
-        <ul class="bullets">
-          <li>Relevant coursework: ML, DL, Data Visualization, Databases, Security.</li>
-        </ul>
+      <div class="card">
+        <h3>Business Time-Series Forecasting</h3>
+        <p>
+          Developed forecasting models (MLP, LSTM, BiLSTM) to predict future trends and support strategic planning 
+          through data-driven insights.
+        </p>
       </div>
+
+      <div class="card">
+        <h3>Drug–Drug Interaction Prediction</h3>
+        <p>
+          Built neural network models with embedding layers on large-scale datasets, focusing on feature engineering 
+          and predictive performance evaluation.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p class="muted" style="text-align:center;">Put your links here 👇</p>
-
-      <div class="contact-row">
-        <a class="contact-link" href="PUT_GITHUB_LINK_HERE" target="_blank">GitHub</a>
-        <a class="contact-link" href="PUT_LINKEDIN_LINK_HERE" target="_blank">LinkedIn</a>
-        <a class="contact-link" href="mailto:PUT_EMAIL_HERE">Email</a>
-        <a class="contact-link" href="PUT_PORTFOLIO_OR_WEBSITE_HERE" target="_blank">Website</a>
-      </div>
-    </div>
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <a href="mailto:your@email.com">Email</a>
+    <a href="https://linkedin.com">LinkedIn</a>
+    <a href="https://github.com">GitHub</a>
   </section>
 
-  <footer>© 2026 YOUR NAME | Portfolio</footer>
+  <footer>
+    © 2026 Mohammad Saeed. All rights reserved.
+  </footer>
 
 </body>
 </html>
