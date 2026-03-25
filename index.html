@@ -19,37 +19,31 @@
     <header class="hero">
       <nav class="topbar" aria-label="Primary">
         <div class="brand">
-          <span class="brand-mark">MS</span>
-          <span class="brand-text">MOHAMMAD::ANALYTICS</span>
+          <span class="brand-text">MOHAMMAD :: PORTFOLIO</span>
         </div>
         <div class="topbar-links">
-          <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#capabilities">Skills</a>
-          <a href="#contact">Contact</a>
+          <a href="#projects">Projects</a>
         </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+          <span class="theme-toggle-label">Light Mode</span>
+        </button>
       </nav>
 
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Data Analyst x Product Analytics x AI</p>
-          <div class="signal-strip" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <p class="eyebrow">Data Analyst x AI x Product Analyst</p>
           <h1>Mohammad Saeed</h1>
           <p class="hero-text">
-            I build practical analytics systems that help teams understand growth,
-            user behavior, and business performance. My focus is turning raw,
-            fragmented data into dashboards and insights leaders can act on.
+            I turn raw data into product, growth, and business insights that teams can actually use.
+            My focus is analytics systems, dashboards, user behavior analysis, retention, churn,
+            and helping startups make clearer decisions with data.
           </p>
           <p class="hero-text hero-text-secondary">
-            I have a data science background from the University of Jordan and
-            hands-on experience across product analytics, executive reporting,
-            retention analysis, machine learning projects, and multi-source KPI tracking.
+            I’m a data scientist graduated from the University of Jordan, with hands-on experience
+            across data analytics, AI, product growth insights, multi-source reporting, and KPI tracking.
           </p>
 
           <div class="hero-actions">
@@ -74,7 +68,6 @@
         <aside class="hero-panel" aria-label="Profile summary">
           <div class="portrait-card">
             <div class="portrait-glow"></div>
-            <div class="panel-kicker">Portfolio Snapshot</div>
             <img
               class="portrait-image"
               src="assets/97476_image_edits.png"
@@ -291,5 +284,33 @@
       </div>
     </footer>
   </div>
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeLabel = document.querySelector(".theme-toggle-label");
+    const themeIcon = document.querySelector(".theme-toggle-icon");
+    const themeKey = "mohammad-portfolio-theme";
+
+    const applyTheme = (theme) => {
+      const isLight = theme === "light";
+      root.setAttribute("data-theme", isLight ? "light" : "dark");
+      if (!themeToggle) return;
+      themeToggle.setAttribute("aria-pressed", String(isLight));
+      themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+      if (themeLabel) themeLabel.textContent = isLight ? "Dark Mode" : "Light Mode";
+      if (themeIcon) themeIcon.textContent = isLight ? "☾" : "☼";
+    };
+
+    const storedTheme = localStorage.getItem(themeKey);
+    applyTheme(storedTheme || "dark");
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        localStorage.setItem(themeKey, nextTheme);
+        applyTheme(nextTheme);
+      });
+    }
+  </script>
 </body>
 </html>
